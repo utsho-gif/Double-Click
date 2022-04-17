@@ -11,7 +11,7 @@ const NotFound = () => {
         <div className="row">
           <div className="col-lg-6 my-5">
             <div className="mt-5">
-              <motion.h1 animate={{rotate: -45}} className="my-5">Opps!</motion.h1>
+              <motion.h1 animate={{rotate: -45}} transition={{ ease: "easeOut", duration: 0.5 }} className="my-5">Opps!</motion.h1>
             </div>
             <div>
               <h2>We can't seem to find the page you're looking for.</h2>

@@ -16,8 +16,8 @@ const Banner = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <motion.h2  animate={{ x: [0, 100, 0] }} transition={{ ease: "easeOut", duration: 2 }}>hello! this is double click.</motion.h2>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <motion.h2  animate={{ y: [0,-300], x:[0,-200]}} transition={{ ease: "easeOut", duration: 1.5 }}>hello! this is double click.</motion.h2>
+            <motion.p animate={{ y: [0,-300], x:[0,-200]}} transition={{ ease: "easeOut", duration: 2 }} className="fw-bold">Most completed photography with a huge collection.</motion.p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -27,9 +27,9 @@ const Banner = () => {
             alt="Second slide"
           />
 
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <Carousel.Caption className="text-start ms-5 text-dark fw-bolder">
+            <motion.h3 className="ms-5 ps-5" animate={{ y: [0,-300], x:[0,-200]}} transition={{ ease: "easeOut", duration: 1.5 }}>Free updates and premium support</motion.h3>
+            <motion.h5 className="ms-5 ps-5" animate={{ y: [0,-300], x:[0,-200]}} transition={{ ease: "easeOut", duration: 2 }}>You'll have access to all updates and premium support</motion.h5>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -40,10 +40,7 @@ const Banner = () => {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <motion.h1 animate={{ y: [0,-350], x:[0,-250]}} transition={{ ease: "easeOut", duration: 1.5 }} className="text-dark">Build For Creative Showcase</motion.h1>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
