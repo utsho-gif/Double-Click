@@ -3,9 +3,7 @@ import { Button, Spinner } from "react-bootstrap";
 
 const Loading = () => {
   return (
-    <div
-      
-    >
+    <div>
       <>
         <Button variant="primary" disabled>
           <Spinner

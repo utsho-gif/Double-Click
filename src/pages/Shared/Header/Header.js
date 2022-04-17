@@ -5,25 +5,27 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import logo from "../../../images/logo.JPG";
-import Loading from '../../Shared/Loading/Loading';
+import Loading from "../../Shared/Loading/Loading";
 
 const Header = () => {
   let loadingEle;
   const [user, loading, error] = useAuthState(auth);
 
-  if(loading){
-    loadingEle = <p>
+  if (loading) {
+    loadingEle = (
+      <p>
         <Loading></Loading>
-    </p> 
+      </p>
+    );
   }
 
   const handleSignOut = () => {
     signOut(auth)
-    .then(() => {})
-    .catch(error => {
-      error(error.message);
-    })
-  }
+      .then(() => {})
+      .catch((error) => {
+        error(error.message);
+      });
+  };
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -48,11 +50,15 @@ const Header = () => {
               </Nav.Link>
               {user ? (
                 <>
-                {loadingEle}
-                <p className="text-warning mx-2 mt-2">{user?.displayName}</p>
-                <button onClick={handleSignOut} className="btn btn-outline-light h-50">Sign Out</button>
+                  {loadingEle}
+                  <p className="text-warning mx-2 mt-2">{user?.displayName}</p>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn btn-outline-light h-50"
+                  >
+                    Sign Out
+                  </button>
                 </>
-                
               ) : (
                 <Nav.Link as={Link} to="/login">
                   Login
