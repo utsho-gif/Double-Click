@@ -43,7 +43,7 @@ const Login = () => {
       <h2 className="text-secondary text-center my-5">Sign In</h2>
       <Form onSubmit={handleSignIn}>
         <Form.Group className="mb-5" controlId="formBasicEmail">
-          <Form.Control name="email" type="email" placeholder="Enter email" />
+          <Form.Control name="email" type="email" placeholder="Enter email" required/>
         </Form.Group>
 
         <Form.Group className="mb-5" controlId="formBasicPassword">
@@ -51,6 +51,7 @@ const Login = () => {
             name="password"
             type="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
         {error ? errorELe : loadingEle}
