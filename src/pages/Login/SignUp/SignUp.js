@@ -4,7 +4,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -12,6 +12,8 @@ import Loading from "../../Shared/Loading/Loading";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from.pathname || '/';
   let loadingEle;
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
@@ -46,7 +48,7 @@ const SignUp = () => {
   };
 
   if (user) {
-    navigate("/home");
+    navigate(from, {replace: true});
   }
   return (
     <div className="container w-50">

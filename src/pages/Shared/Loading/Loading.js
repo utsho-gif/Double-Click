@@ -3,9 +3,11 @@ import { Button, Spinner } from "react-bootstrap";
 
 const Loading = () => {
   return (
-    <div>
+    <div
+      className="d-flex justify-content-center align-items-center w-100"
+    >
       <>
-        <Button variant="primary" disabled>
+        <Button variant="light" disabled>
           <Spinner
             as="span"
             animation="grow"

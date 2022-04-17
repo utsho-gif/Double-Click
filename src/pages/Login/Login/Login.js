@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -8,7 +8,9 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import Loading from "../../Shared/Loading/Loading";
 
 const Login = () => {
+  const location = useLocation();  
   const navigate = useNavigate();
+  const from = location?.state?.from.pathname || '/';
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
@@ -34,7 +36,7 @@ const Login = () => {
   };
 
   if (user) {
-    navigate("/home");
+    navigate(from, {replace: true});
   }
   return (
     <div className="container w-50">
