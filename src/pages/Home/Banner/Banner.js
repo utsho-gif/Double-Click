@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion"
 import { Carousel } from "react-bootstrap";
-import banner1 from '../../../images/mountain.jpg';
-import banner2 from '../../../images/nature.jpg';
-import banner3 from '../../../images/camera.jpg';
+import banner1 from '../../../images/banner/mountain.jpg';
+import banner2 from '../../../images//banner/nature.jpg';
+import banner3 from '../../../images/banner/camera.jpg';
 
 const Banner = () => {
   return (

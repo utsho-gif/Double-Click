@@ -1,0 +1,17 @@
+.tstyle {
+  bottom: 180px;
+  left: 200px;
+  background: rgba(29, 29, 33, 0.7);
+  padding: 8px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+  display: inline-block;
+  line-height: 17px;
+}
+.special-text{
+    font-size: 15px;
+    font-weight: normal;
+    color: #5b5b5b;
+    font-family: 'Karla', sans-serif;
+}
