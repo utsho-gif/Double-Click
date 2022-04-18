@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { toast, ToastContainer } from "react-toastify";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import Loading from "../../Shared/Loading/Loading";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const location = useLocation();  
+  const emailRef = useRef("");
+  const location = useLocation();
   const navigate = useNavigate();
-  const from = location?.state?.from.pathname || '/';
+  const from = location?.state?.from.pathname || "/";
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+  const [sendPasswordResetEmail, sending, resetError] =
+    useSendPasswordResetEmail(auth);
+
   let loadingEle;
-  if (loading) {
+  if (loading || sending) {
     loadingEle = (
       <p>
         <Loading></Loading>
@@ -24,8 +32,16 @@ const Login = () => {
   }
 
   let errorELe;
-  if (error) {
-    errorELe = <p className="text-danger fw-bold">{error?.message}</p>;
+  if (error || resetError) {
+    errorELe = (
+      <p className="text-danger fw-bold">
+        {error?.message} || {resetError?.message}
+      </p>
+    );
+  }
+
+  if (user) {
+    navigate(from, { replace: true });
   }
 
   const handleSignIn = (event) => {
@@ -35,15 +51,35 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  if (user) {
-    navigate(from, {replace: true});
-  }
+  const handleResetPass = async () => {
+    const email = emailRef.current.value;
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast.success("Email sent", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error("Did ya forget to enter email");
+    }
+  };
   return (
     <div className="container w-50">
       <h2 className="text-secondary text-center my-5">Sign In</h2>
       <Form onSubmit={handleSignIn}>
         <Form.Group className="mb-5" controlId="formBasicEmail">
-          <Form.Control name="email" type="email" placeholder="Enter email" required/>
+          <Form.Control
+            ref={emailRef}
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-5" controlId="formBasicPassword">
@@ -72,12 +108,25 @@ const Login = () => {
       </p>
       <p>
         Forget Password?{" "}
-        <button className="btn btn-link text-primary text-decoration-none">
+        <button
+          onClick={handleResetPass}
+          className="btn btn-link text-primary text-decoration-none"
+        >
           Reset Password
         </button>{" "}
       </p>
       <SocialLogin></SocialLogin>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

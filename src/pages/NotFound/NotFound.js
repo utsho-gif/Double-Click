@@ -23,8 +23,8 @@ const NotFound = () => {
               </h4>
             </div>
           </div>
-          <div className="col-lg-6">
-            <img src={notf} alt="" />
+          <div className="col-lg-6 ">
+            <img className="img-fluid" src={notf} alt="" />
           </div>
         </div>
       </div>

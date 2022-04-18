@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import {
   useCreateUserWithEmailAndPassword,
@@ -11,6 +11,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import Loading from "../../Shared/Loading/Loading";
 
 const SignUp = () => {
+  const [showErr, setShowErr] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from.pathname || '/';
@@ -42,8 +43,14 @@ const SignUp = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const cofPass = event.target.ConfPassword.value;
     const displayName = event.target.name.value;
-    await createUserWithEmailAndPassword(email, password);
+    if(password === cofPass){
+      await createUserWithEmailAndPassword(email, password);
+    }
+    else{
+      setShowErr("Password doesn't match!");
+    }
     await updateProfile({ displayName });
   };
 
@@ -84,6 +91,7 @@ const SignUp = () => {
             required
           />
         </Form.Group>
+        <h6 className="text-danger mb-3">{showErr}</h6>
         {error ? errorEle : loadingEle}
 
         <Button

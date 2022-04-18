@@ -3,6 +3,7 @@ import works1 from '../../../images/works/works1.jpg';
 import works2 from '../../../images/works/works2.jpg';
 import works3 from '../../../images/works/works3.jpg';
 import works4 from '../../../images/works/works4.jpg';
+import works5 from '../../../images/works/works5.jpg';
 import Work from '../Work/Work';
 
 const Works = () => {
@@ -11,6 +12,7 @@ const Works = () => {
         {id: 2, img: works2, des: 'Train running through mountain of Yunhai, China', price: 45.99},
         {id: 3, img: works3, des: 'A delightful women with her precious smile', price: 56.99},
         {id: 4, img: works4, des: 'Birds on the lampost in Berline', price: 65.99},
+        {id: 5, img: works5, des: 'Birds on the lampost in Berline', price: 65.99}
     ]
     return (
         <div className='' style={{backgroundColor:'#f2f5f7'}}>

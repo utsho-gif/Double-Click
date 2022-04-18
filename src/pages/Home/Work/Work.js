@@ -7,7 +7,7 @@ const Work = ({ work }) => {
   return (
     <div className="col-12 col-lg-4 col-md-6">
       <img className="img-fluid h-75" src={img} alt="" />
-      <p className="p-2 fw-bold mt-3">{des}</p>
+      <p className=" fw-bold mt-2">{des}</p>
       <h3>${price}</h3>
       <button className="btn btn-outline-dark w-50" onClick={() => navigate('/checkout')}>Purchase</button>
     </div>
