@@ -69,7 +69,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="container w-50">
+    <div className="container w-50 mb-4">
       <h2 className="text-secondary text-center my-5">Sign In</h2>
       <Form onSubmit={handleSignIn}>
         <Form.Group className="mb-5" controlId="formBasicEmail">
