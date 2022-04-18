@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import logo from "../../../images/logo.JPG";
 import Loading from "../../Shared/Loading/Loading";
+import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   let loadingEle;
@@ -42,15 +43,17 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav>
-              <Nav.Link as={Link} to="/blog">
+              <Nav.Link as={CustomLink} to="/checkout">
+                Checkout
+              </Nav.Link>
+              <Nav.Link as={CustomLink} to="/blog">
                 Blogs
               </Nav.Link>
-              <Nav.Link as={Link} to="/about">
+              <Nav.Link as={CustomLink} to="/about">
                 About
               </Nav.Link>
               {user ? (
                 <>
-                  {loadingEle}
                   <p className="text-warning mx-2 mt-2">{user?.displayName}</p>
                   <button
                     onClick={handleSignOut}

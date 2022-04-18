@@ -34,7 +34,7 @@ const SignUp = () => {
   if (error || updateError) {
     errorEle = (
       <p className="text-danger fw-bold">
-        {error?.message} || {updateError?.message}
+        {error?.message || updateError?.message}
       </p>
     );
   }

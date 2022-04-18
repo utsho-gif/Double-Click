@@ -7,7 +7,7 @@ import banner3 from '../../../images/banner/camera.jpg';
 
 const Banner = () => {
   return (
-    <div>
+    <div style={{fontFamily:'Georgia'}}>
       <Carousel fade>
         <Carousel.Item>
           <img

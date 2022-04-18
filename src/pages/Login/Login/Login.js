@@ -35,7 +35,7 @@ const Login = () => {
   if (error || resetError) {
     errorELe = (
       <p className="text-danger fw-bold">
-        {error?.message} || {resetError?.message}
+        {error?.message || resetError?.message}
       </p>
     );
   }
@@ -102,7 +102,7 @@ const Login = () => {
       </Form>
       <p className="mt-4">
         New To Click?{" "}
-        <Link className="text-decoration-none text-primary" to={"/signup"}>
+        <Link className="text-decoration-none text-primary mx-3" to={"/signup"}>
           Create An Account
         </Link>
       </p>
@@ -110,7 +110,7 @@ const Login = () => {
         Forget Password?{" "}
         <button
           onClick={handleResetPass}
-          className="btn btn-link text-primary text-decoration-none"
+          className="btn text-primary text-decoration-none"
         >
           Reset Password
         </button>{" "}
